@@ -12,7 +12,7 @@ export const POST = async (req: Request) => {
     if (!email || !password)
       return NextResponse.json({ message: "Wrong request" }, { status: 422 });
     await connectToDatabase();
-    const hashedpassword = await bcrypt.hash(password, 10);
+    const hashedpassword: string = await bcrypt.hash(password, 10);
     const user = await prisma.user.create({
       data: { email, hashedpassword },
     });
