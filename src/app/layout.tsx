@@ -5,6 +5,7 @@ import "./globals.css";
 import { Providers } from "./GlobalRedux/provider";
 import { Toaster } from "@/components/ui/toaster";
 import Preloader from "./loading";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className="h-screen w-screen scroll-smooth">
+      <body className={cn(inter.className, "h-full w-full")}>
         <Providers>
           <Suspense fallback={<Preloader />}>{children}</Suspense>
         </Providers>
